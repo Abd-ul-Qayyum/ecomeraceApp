@@ -1,4 +1,6 @@
+import 'package:ecomeraceapp/screens/cart_full.dart';
 import 'package:flutter/material.dart';
+import 'cart_empty.dart';
 
 class CartScreen extends StatefulWidget {
   static const routeName = '/CartScreen';
@@ -9,11 +11,7 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(
-          child: Container(
-      child: Text('Cart'),
-    ),
-        ));
+    List products = [];
+    return Scaffold(body: products.isEmpty ? CartEmpty() : CartFull());
   }
 }

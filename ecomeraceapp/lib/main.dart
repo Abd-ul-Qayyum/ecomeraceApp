@@ -1,32 +1,49 @@
 import 'package:ecomeraceapp/bottom_bar.dart';
-import 'package:ecomeraceapp/screens/cart.dart';
-import 'package:ecomeraceapp/screens/feeds.dart';
-import 'package:ecomeraceapp/screens/home.dart';
-import 'package:ecomeraceapp/screens/search.dart';
-import 'package:ecomeraceapp/screens/user.dart';
+import 'package:ecomeraceapp/const/theme_dark.dart';
+import 'package:ecomeraceapp/provider/dark_theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  DarkThemeProvider themeChangeProvider = DarkThemeProvider();
+  void getCurrentAppTheme() async {
+    themeChangeProvider.darkTheme =
+        await themeChangeProvider.darkThemePreferences.getTheme();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getCurrentAppTheme();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: BottomBarScreen(),
-      // initialRoute: HomeScreen.routeName,
-      // routes: {
-      //   HomeScreen.routeName: (context) => HomeScreen(),
-      //   CartScreen.routeName: (context) => CartScreen(),
-      //   FeedScreen.routeName: (context) => FeedScreen(),
-      //   SearchScreen.routeName: (context) => SearchScreen(),
-      //   UserScreen.routeName: (context) => UserScreen(),
-      // },
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) {
+              return themeChangeProvider;
+            },
+          ),
+        ],
+        child:
+            Consumer<DarkThemeProvider>(builder: (context, themeData, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: Styles.themeData(themeChangeProvider.darkTheme, context),
+            home: BottomBarScreen(),
+          );
+        }));
   }
 }

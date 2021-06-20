@@ -1,3 +1,4 @@
+import 'package:ecomeraceapp/const/my_icons.dart';
 import 'package:ecomeraceapp/screens/cart.dart';
 import 'package:ecomeraceapp/screens/feeds.dart';
 import 'package:ecomeraceapp/screens/home.dart';
@@ -12,23 +13,16 @@ class BottomBarScreen extends StatefulWidget {
 }
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
-  // List _pages = [
-  //   HomeScreen(),
-  //   CartScreen(),
-  //   SearchScreen(),
-  //   FeedScreen(),
-  //   UserScreen(),
-  // ];
   List<Map<String, Object>> _pages;
-  int _selectedIndex = 0;
+  int _selectedIndex = 4;
 
   @override
   void initState() {
     _pages = [
       {'page': HomeScreen(), 'title': 'Home Screen'},
-      {'page': CartScreen(), 'title': 'Cart Screen'},
+      {'page': FeedScreen(), 'title': 'Cart Screen'},
       {'page': SearchScreen(), 'title': 'Search Screen'},
-      {'page': FeedScreen(), 'title': 'Feeds Screen'},
+      {'page': CartScreen(), 'title': 'Feeds Screen'},
       {'page': UserScreen(), 'title': 'User Screen'},
     ];
     super.initState();
@@ -53,7 +47,10 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         clipBehavior: Clip.antiAlias,
         shape: CircularNotchedRectangle(),
         child: Container(
-          decoration: BoxDecoration(border: Border(top: BorderSide(width: 0.5),)),
+          decoration: BoxDecoration(
+              border: Border(
+            top: BorderSide(width: 0.5),
+          )),
           child: BottomNavigationBar(
             onTap: _selectPage,
             backgroundColor: Theme.of(context).primaryColor,
@@ -62,12 +59,12 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
             currentIndex: _selectedIndex,
             items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: Icon(MyAppIcons.home),
                 tooltip: 'Home',
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.rss_feed),
+                icon: Icon(MyAppIcons.rss),
                 tooltip: 'Feeds',
                 label: 'Feeds',
               ),
@@ -78,12 +75,12 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 label: 'search',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_bag),
+                icon: Icon(MyAppIcons.bag),
                 tooltip: 'Cart',
                 label: 'Cart',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
+                icon: Icon(MyAppIcons.user),
                 tooltip: 'User',
                 label: 'User',
               ),
@@ -97,7 +94,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         backgroundColor: Colors.purple,
         tooltip: 'search',
         elevation: 5,
-        child: (Icon(Icons.search)),
+        child: (Icon(MyAppIcons.search)),
         onPressed: () {
           setState(() {
             _selectedIndex = 2;
