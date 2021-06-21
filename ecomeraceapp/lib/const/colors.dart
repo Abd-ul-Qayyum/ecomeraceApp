@@ -14,9 +14,9 @@ class ColorConsts {
   static Color cartBadgeColor = Color(0xffba68c8);
 
   static Color gradiendFStart = Color(0xffe040fb);
-  static Color gradiendLStart = Color(0xffaa00FF);
+  static Color gradiendLStart = Color(0xff9c27b0);
   static Color gradiendFEnd = Color(0xffe1bee7);
-  static Color gradiendLEnd = Color(0xffab47bc);
+  static Color gradiendLEnd = Color(0xffe91e63);
   static Color endColor = Color(0xffce93db);
   static Color starterColor = Color(0xff8e24aa);
   static Color purple300 = Color(0xffba68c8);
