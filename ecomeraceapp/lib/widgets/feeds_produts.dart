@@ -2,7 +2,6 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 class FeedsProducts extends StatefulWidget {
-  // const FeedsProducts({ Key? key }) : super(key: key);
 
   @override
   _FeedsProductsState createState() => _FeedsProductsState();
